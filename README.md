@@ -6,8 +6,8 @@ Proyecto Taller De Ingeniería De Software
 - Carla Saez
 - Felipe Vidal
 
-### Arquitectura:
-La arquitectura a utilizar en el proyecto será MVC (Modelo Vista Controlador), el cual es un patrón que separa la aplicación en tres capas:
+### Arquitectura de Software:
+La arquitectura a utilizar en el proyecto será MVC (Modelo Vista Controlador), el cual es un patrón que separa la applicación en tres capas:
 
 - Modelo: Representación que contiene la información de los datos.
 - Vista: Interfaz de usuario.
@@ -15,7 +15,7 @@ La arquitectura a utilizar en el proyecto será MVC (Modelo Vista Controlador), 
 
 ![image](https://user-images.githubusercontent.com/36490478/132144998-b56e3206-f0f7-49ab-abe0-99ccdca5f40f.png)
 
-A continuación se describen las herramientas a utilizar en este proyecto.
+A continuacion se describen las herramientas a utilizar en este proyecto.
 #### Lenguaje:
 Debido a que el proyecto a realizar es una aplicación web se utilizará el lenguaje JavaScript. Otra razón es que este lenguaje lo hemos utilizado anteriormente.
 
@@ -27,3 +27,6 @@ Debido a que la seguridad de los datos es muy importante en las fichas clínicas
 
 - Bootstrap: Se utilizará bootstrap debido a la comodidad y fácil manejo que ofrece al utilizarlo para la creación de componentes, formularios, estilos, entre otras cosas. Además de darle la posibilidad a la página web de volverla responsive.
 
+
+### Modelamiento de procesos:
+![1](https://user-images.githubusercontent.com/65493412/132146312-b509c812-6d24-4f1a-b43c-66fdfc0b8a68.png)
