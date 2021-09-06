@@ -28,5 +28,5 @@ Debido a que la seguridad de los datos es muy importante en las fichas clínicas
 - Bootstrap: Se utilizará bootstrap debido a la comodidad y fácil manejo que ofrece al utilizarlo para la creación de componentes, formularios, estilos, entre otras cosas. Además de darle la posibilidad a la página web de volverla responsive.
 
 
-### Modelamiento de procesos:
+### Modelo de procesos:
 ![1](https://user-images.githubusercontent.com/65493412/132146312-b509c812-6d24-4f1a-b43c-66fdfc0b8a68.png)
