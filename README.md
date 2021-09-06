@@ -7,7 +7,15 @@ Proyecto Taller De Ingeniería De Software
 - Felipe Vidal
 
 ### Arquitectura:
-A continuacion se describira la arquitectura a utilizar en este proyecto.
+La arquitectura a utilizar en el proyecto será MVC (Modelo Vista Controlador), el cual es un patrón que separa la applicación en tres capas:
+
+- Modelo: Representación que contiene la información de los datos.
+- Vista: Interfaz de usuario.
+- Controlador: Conexión entre el modelo y la vista.
+
+![image](https://user-images.githubusercontent.com/36490478/132144998-b56e3206-f0f7-49ab-abe0-99ccdca5f40f.png)
+
+A continuacion se describen las herramientas a utilizar en este proyecto.
 #### Lenguaje:
 Debido a que el proyecto a realizar es una aplicación web se utilizará el lenguaje JavaScript. Otra razón es que este lenguaje lo hemos utilizado anteriormente.
 
