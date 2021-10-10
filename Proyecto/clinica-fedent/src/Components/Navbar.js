@@ -4,7 +4,7 @@ export const Navbar = () => {
     return (
         <nav className='navbar navbar-expand-lg navbar-dark bg-info'>
             <div className='container'>
-                <a href='#' className='navbar-brand'>Clinica Fedent</a>
+                <a href='/' className='navbar-brand'>Clinica Fedent</a>
 
                 {/* Boton para menu movil */}
                 <button 

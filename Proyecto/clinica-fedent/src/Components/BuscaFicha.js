@@ -36,8 +36,6 @@ export const BuscaFicha = () => {
                     </div>
                 </div>
             </div>
-           
-            
         </div>
     )
 }
