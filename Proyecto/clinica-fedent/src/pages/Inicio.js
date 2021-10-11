@@ -8,14 +8,17 @@ export const Inicio = () => {
     return (
         <>
          <Navbar />
-         <div className='container bg-light'>
-             <div className='row'>
-                 <div className='col '>
-                     <BuscaFicha />
-                 </div>
-             </div>
-         </div>
-         <Footer />
+
+            <div className='container bg-light'>
+                <div className='row'>
+                    <div className='col '>
+                        <BuscaFicha />
+                    </div>
+                </div>
+            </div>
+            <Footer />
+         
+         
          </>
     )
 }
