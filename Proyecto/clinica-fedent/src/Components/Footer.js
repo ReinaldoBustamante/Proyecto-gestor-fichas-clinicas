@@ -6,7 +6,7 @@ export const Footer = () => {
             <div className='container '>
                 <div className='row '>
                     <div className='col mt-2 mb-2'>
-                        <span className='h6'>Clinica Dental Fedent</span>
+                        <span className='h6'>2021 Clinica Dental Fedent</span>
                     </div>
                 </div>
             </div>
