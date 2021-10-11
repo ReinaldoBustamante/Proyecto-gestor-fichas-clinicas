@@ -31,4 +31,4 @@ Debido a que la seguridad de los datos es muy importante en las fichas clínicas
 https://xd.adobe.com/view/3f604505-a573-4e0a-9358-085d0074dfa9-6a33/
 
 ###  Pagina Web:
-https://clinica-fedent.vercel.app
+https://ficha-clinica-vercel.vercel.app/
