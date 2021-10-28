@@ -1,13 +1,10 @@
-
-import React from "react";
-
-
+import React from 'react'
 
 export const Navbar = () => {
     return (
-     
-            <nav className='navbar navbar-expand-lg navbar-dark bg-info'>
-                <div className='container'>
+        <div>
+            <nav className='navbar navbar-expand-lg navbar-dark bg-primary'>
+                <div className='container-fluid'>
                     <a href='/' className='navbar-brand'>Clinica Fedent</a>
 
                     {/* Boton para menu movil */}
@@ -29,7 +26,8 @@ export const Navbar = () => {
                     <div className = 'collpase navbar-collapse' id='menu'>
                         <ul className='navbar-nav me-auto mb-2 mb-lg-0 '> 
                             <li className='nav-item'><a href='/' className='nav-link'>Inicio</a></li>
-                            <li className='nav-item'><a href='/nueva-ficha' className='nav-link'>Nueva Ficha</a></li>
+                            <li className='nav-item'><a href='/registrar-paciente' className='nav-link'>Registrar Paciente</a></li>
+                            
                         </ul>
                         <button type='button' className='btn btn-outline-danger'>Cerrar Sesion</button>
                     </div>
@@ -37,10 +35,6 @@ export const Navbar = () => {
 
                 </div>
             </nav>
-
-           
-      
-        
-        
+        </div>
     )
 }
