@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Accordion } from '../components/Accordion'
+import { Accordion } from '../components/form/Accordion'
 
 
 

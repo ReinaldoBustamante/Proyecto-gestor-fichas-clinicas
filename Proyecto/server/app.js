@@ -29,15 +29,15 @@ const pool = mysql.createPool({
     database        : 'clinica_fedent'
 })
 
-// GET PACIENTES
+// -----------------------------PACIENTES-------------------------------------------------------------
 
-app.get('/paciente', (req, res) => {
+app.get('/pacientes', (req, res) => {
 
     pool.getConnection((err, connection) =>{
         if(err) throw err
         console.log(`conected as id ${connection.threadId}`)
 
-        connection.query('SELECT * from paciente', (err, rows) => {
+        connection.query('SELECT * from pacientes', (err, rows) => {
             connection.release() // return the connection to pool
 
             if(!err){
@@ -49,14 +49,15 @@ app.get('/paciente', (req, res) => {
     })
 })
 
-// GET PACIENTES ID
-app.get('/paciente/:id', (req, res) => {
+// PACIENTES ID
+
+app.get('/pacientes/:id', (req, res) => {
 
     pool.getConnection((err, connection) =>{
         if(err) throw err
         console.log(`conected as id ${connection.threadId}`)
 
-        connection.query('SELECT * from paciente WHERE id = ?', [req.params.id], (err, rows) => {
+        connection.query('SELECT * from pacientes WHERE id_paciente = ?', [req.params.id], (err, rows) => {
             connection.release() // return the connection to pool
 
             if(!err){
@@ -69,8 +70,9 @@ app.get('/paciente/:id', (req, res) => {
 
 })
 
-// GET ODONTOLOGO
-app.get('/odontologo', (req, res) => {
+// -----------------------------------ODONTOLOGOS--------------------------------------------------------
+
+app.get('/odontologos', (req, res) => {
 
     pool.getConnection((err, connection) =>{
         if(err) throw err
@@ -88,8 +90,28 @@ app.get('/odontologo', (req, res) => {
     })
 })
 
+// ODONTOLOGOS ID
 
-//GET TONS
+app.get('/odontologos/:id', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from odontologo WHERE id_odontologo = ?', [req.params.id], (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+
+})
+
+//-----------------------TONS-------------------------------------------------------------
 
 app.get('/tons', (req, res) => {
 
@@ -109,10 +131,31 @@ app.get('/tons', (req, res) => {
     })
 })   
 
+// TONS ID
 
-//GET ODONTOGRAMA
+app.get('/tons/:id', (req, res) => {
 
-app.get('/odontograma', (req, res) => {
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from tons WHERE id_tons = ?', [req.params.id], (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+
+})
+
+
+//----------------------ODONTOGRAMA-----------------------------------------
+
+app.get('/odontogramas', (req, res) => {
 
     pool.getConnection((err, connection) =>{
         if(err) throw err
@@ -130,17 +173,37 @@ app.get('/odontograma', (req, res) => {
     })
 })
 
+// ODONTOGRAMA ID
 
-
-//GET HISTORIAL CLINICO
-
-app.get('/historial_clinico', (req, res) => {
+app.get('/odontogramas/:id', (req, res) => {
 
     pool.getConnection((err, connection) =>{
         if(err) throw err
         console.log(`conected as id ${connection.threadId}`)
 
-        connection.query('SELECT * from odontologo', (err, rows) => {
+        connection.query('SELECT * from odontograma WHERE id_odontograma = ?', [req.params.id], (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+
+})
+
+
+//--------------------HISTORIAL CLINICO-----------------------------------
+
+app.get('/historiales-clinicos', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from historial_clinico', (err, rows) => {
             connection.release() // return the connection to pool
 
             if(!err){
@@ -152,16 +215,37 @@ app.get('/historial_clinico', (req, res) => {
     })
 })
 
+// HISTORIAL CLINICO ID
 
-//GET FICHA CLINICA
-
-app.get('/ficha_clinica', (req, res) => {
+app.get('/historiales-clinicos/:id', (req, res) => {
 
     pool.getConnection((err, connection) =>{
         if(err) throw err
         console.log(`conected as id ${connection.threadId}`)
 
-        connection.query('SELECT * from ficha_clinica', (err, rows) => {
+        connection.query('SELECT * from historial_clinico WHERE id_historial_clinico = ?', [req.params.id], (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+
+})
+
+
+//----------------------FICHA CLINICA-----------------------------------
+
+app.get('/fichas-clinicas', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from ficha', (err, rows) => {
             connection.release() // return the connection to pool
 
             if(!err){
@@ -173,9 +257,32 @@ app.get('/ficha_clinica', (req, res) => {
     })
 })
 
-// GET DATOS CLINICOS
+// FICHA CLINICA ID
 
-app.get('/datos_clinicos', (req, res) => {
+app.get('/fichas-clinicas/:id', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from ficha WHERE folio = ?', [req.params.id], (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+
+})
+
+
+
+// ------------------DATOS CLINICOS------------------------------------
+
+app.get('/datos-clinicos', (req, res) => {
 
     pool.getConnection((err, connection) =>{
         if(err) throw err
@@ -192,6 +299,200 @@ app.get('/datos_clinicos', (req, res) => {
         })
     })
 })
+
+// DATOS CLINICOS ID
+
+app.get('/datos-clinicos/:id', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from datos_clinicos WHERE id_datos_clinicos = ?', [req.params.id], (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+
+})
+
+
+// ------------------PIEZAS------------------------------------
+
+app.get('/piezas', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from piezas', (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+})
+
+
+// PIEZAS ID
+
+app.get('/piezas/:id', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from piezas WHERE id_pieza = ?', [req.params.id], (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+
+})
+
+// ------------------ACCEDER------------------------------------
+
+app.get('/accesos-fichas', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from acceder', (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+})
+
+// ID ACCESO
+
+app.get('/accesos-fichas/:id', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from acceder WHERE id = ?', [req.params.id], (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+
+})
+
+
+
+// ------------------PIEZAS_ODONTOGRAMA------------------------------------
+
+app.get('/piezas-odontogramas', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from pieza_odontograma', (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+})
+
+// ID PIEZAS_ODONTOGRAMAS
+
+app.get('/piezas-odontogramas/:id', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from pieza_odontograma WHERE id = ?', [req.params.id], (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+
+})
+
+
+
+// ------------------ODONTOLOGOS_TONS------------------------------------
+
+app.get('/odontologos-tons', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from odontologo_tons', (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+})
+
+// ID ODONTOLOGOS_TONS
+
+app.get('/odontologos-tons/:id', (req, res) => {
+
+    pool.getConnection((err, connection) =>{
+        if(err) throw err
+        console.log(`conected as id ${connection.threadId}`)
+
+        connection.query('SELECT * from odontologo_tons WHERE id = ?', [req.params.id], (err, rows) => {
+            connection.release() // return the connection to pool
+
+            if(!err){
+                res.send(rows)
+            } else{
+                console.log(err)
+            }
+        })
+    })
+
+})
+
+
+
 
 // Listen on enviroment port or 5000
 
