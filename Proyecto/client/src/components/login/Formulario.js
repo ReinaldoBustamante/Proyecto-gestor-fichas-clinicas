@@ -22,7 +22,7 @@ export const Formulario = (props) => {
                         <input type='text' className='form-control' name='username' onChange = {handleOnChange} />
                     </div>
                 </div>
-                <div className='row'>
+                <div className='row mt-3'>
                     <div className='col'>
                         <label htmlFor=''>Password</label>
                         <input type='text' className='form-control' name='password' onChange = {handleOnChange} />

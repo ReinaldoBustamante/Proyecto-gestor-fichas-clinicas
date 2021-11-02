@@ -25,7 +25,7 @@ const pool = mysql.createPool({
     connectionLimit : 10,
     host            : 'localhost',
     user            : 'root',
-    password        : 'password',
+    password        : '',
     database        : 'clinica_fedent'
 })
 
@@ -36,10 +36,14 @@ app.post('/register', (req, res) => {
 
     const username = req.body.username
     const password = req.body.password
-
+    const nombre   = req.body.nombre
+    const rut      = req.body.rut
+    const correo   = req.body.correo
+    const telefono = req.body.telefono
+    const rol      = req.body.rol
 
     pool.query(
-        'INSERT INTO usuarios(username, password) VALUES (?,?)', [username, password],
+        'INSERT INTO usuarios(username, password, nombre, rut, telefono, correo, rol) VALUES (?,?,?,?,?,?,?)', [username, password, nombre, rut, telefono, correo, rol],
         (err, result) =>{
             console.log(err)
             

@@ -4,7 +4,11 @@ import {Redirect} from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { Formulario } from '../components/login/Formulario'
 import '../../src/index.css'
+
+
 export const Login = (props) => {
+
+   
     const {loginStatus, setloginStatus, setusuario} = props
     const [username, setusername] = useState('')
     const [password, setpassword] = useState('')
