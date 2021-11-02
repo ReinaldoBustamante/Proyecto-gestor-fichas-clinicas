@@ -1,15 +1,26 @@
 import React from 'react'
 import {
-    Link
+    Link,
+    Redirect
   } from "react-router-dom";
 
 
-export const Navbar = () => {
+
+export const Navbar = (props) => {
+
+    const {setloginStatus, usuario} = props
+    const {username} = usuario
+
+    const cerrarSesion = () =>{
+        setloginStatus(false)
+        return <Redirect to='/login' />
+        
+    }
     return (
         <div>
             <nav className='navbar navbar-expand-lg navbar-dark bg-primary'>
                 <div className='container-fluid'>
-                    <a href='/' className='navbar-brand'>Clinica Fedent</a>
+                    <Link to='/' className='navbar-brand'>Clinica Fedent</Link>
 
                     {/* Boton para menu movil */}
                     <button 
@@ -37,9 +48,16 @@ export const Navbar = () => {
                             <li className='nav-item'>
                                 <Link to='/registrar-paciente' className='nav-link'>Registrar Paciente</Link>
                             </li>
+                            {username === 'admin'?
+                            <li className='nav-item'>
+                                <Link to='/registrar-usuario' className='nav-link'>Registrar Usuario</Link>
+                            </li>
+                            :
+                            null
+                            }
                             
                         </ul>
-                        <button type='button' className='btn btn-outline-danger'>Cerrar Sesion</button>
+                        <button type='button' className='btn btn-outline-danger' onClick={ cerrarSesion }>Cerrar Sesion</button>
                     </div>
 
 

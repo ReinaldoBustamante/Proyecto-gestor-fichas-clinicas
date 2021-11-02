@@ -3,12 +3,14 @@ import { Bienvenida } from '../components/inicio/Bienvenida'
 import { BuscarPaciente } from '../components/inicio/BuscarPaciente'
 import { DatosPersonales } from '../components/inicio/DatosPersonales'
 
-export const Inicio = () => {
+export const Inicio = (props) => {
+    const {usuario} = props
+    const {nombre, rut, correo, telefono, rol} = usuario
     return (
         <div className='container'>
 
-            < Bienvenida />
-            < DatosPersonales />
+            < Bienvenida nombre = {nombre}/>
+            < DatosPersonales rut={rut} correo = {correo} telefono = {telefono} rol={rol} />
             < BuscarPaciente />
             
         </div>

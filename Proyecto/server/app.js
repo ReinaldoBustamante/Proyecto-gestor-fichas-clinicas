@@ -29,6 +29,62 @@ const pool = mysql.createPool({
     database        : 'clinica_fedent'
 })
 
+
+// REGISTRAR USUARIO
+
+app.post('/register', (req, res) => {
+
+    const username = req.body.username
+    const password = req.body.password
+
+
+    pool.query(
+        'INSERT INTO usuarios(username, password) VALUES (?,?)', [username, password],
+        (err, result) =>{
+            console.log(err)
+            
+        }
+         
+    )
+   
+})
+
+// LOGIN
+
+app.post('/login', (req, res) => {
+
+    const username = req.body.username
+    const password = req.body.password
+
+
+    pool.query(
+        'SELECT * FROM usuarios WHERE username = ? AND password = ?', [username, password],
+        (err, result) =>{
+
+            if (err) {
+                res.send({err: err})
+            } 
+
+            if (result.length > 0){
+                res.send(result)
+            }else{
+                res.send({Message: 'Credenciales Incorrectas.'})
+            }
+     
+        }
+         
+    )
+   
+})
+
+
+
+
+
+
+
+
+
 // -----------------------------PACIENTES-------------------------------------------------------------
 
 app.get('/pacientes', (req, res) => {

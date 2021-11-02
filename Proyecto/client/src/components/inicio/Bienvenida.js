@@ -1,6 +1,7 @@
 import React from 'react'
 
-export const Bienvenida = () => {
+export const Bienvenida = (props) => {
+    const {nombre} = props
     return (
         <div className='container'>
             <div className='row mt-4'>
@@ -8,7 +9,7 @@ export const Bienvenida = () => {
                     <div className="card shadow">
                         <div className="card-body  text-center h4">
                             <div>
-                                Bienvenido <span className='text-success'>Reinaldo Esteban Bustamante Cerda</span>
+                                Bienvenido <span className='text-success'>{nombre}</span>
                             </div>
                         </div>
                     </div>

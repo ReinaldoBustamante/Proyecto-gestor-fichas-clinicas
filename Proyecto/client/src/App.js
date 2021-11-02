@@ -1,36 +1,71 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Navbar } from './components/Navbar'
 import { Inicio } from './pages/Inicio'
+import { RutaPrivada } from './components/RutaPrivada'
+import { RegistraPaciente } from './pages/RegistraPaciente'
+import { Login } from './pages/Login'
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
-
-import { RegistraPaciente } from './pages/RegistraPaciente'
-
+import { RegistrarUsuario } from './pages/RegistrarUsuario'
 
 
 
 export const App = () => {
 
+  const [loginStatus, setloginStatus] = useState(false)
+
+  const [usuario, setusuario] = useState({
+    nombre: '',
+    rut: '',
+    correo: '',
+    rol: '',
+    telefono: '',
+    username: ''
+  })
 
   return (
     <div className='container-flush'>
       <Router>
-        <Navbar />
+        <Navbar setloginStatus={setloginStatus} usuario = {usuario}/>
 
         <Switch>
-          {/* RUTA REGISTRAR PACIENTE*/}
-          <Route path='/registrar-paciente'>
-            <RegistraPaciente />
+          {/* RUTA LOGIN*/}
+          <Route path='/login'>
+            <Login loginStatus = {loginStatus} setloginStatus = {setloginStatus} setusuario = {setusuario} />
           </Route>
 
-          {/* RUTA INICIO */}
+          <RutaPrivada path='/registrar-paciente' loginStatus={loginStatus}>
+
+            <RegistraPaciente />
+    
+          </RutaPrivada>
+
+          <RutaPrivada path='/registrar-usuario' loginStatus={loginStatus}>
+
+            <RegistrarUsuario />
+    
+          </RutaPrivada>
+
+          <RutaPrivada path='/' loginStatus={loginStatus} >
+
+            <Inicio usuario = {usuario} />
+    
+          </RutaPrivada>
+          {/*
+          <Route path='/registrar-paciente'>
+            <RegistraPaciente />
+          </Route>*/}
+
+          {/* 
           <Route path='/'>
             <Inicio />
-          </Route>
+          </Route>*/}
+
 
         </Switch>
           
