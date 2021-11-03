@@ -12,6 +12,7 @@ import {
   Route,
 } from "react-router-dom";
 import { RegistrarUsuario } from './pages/RegistrarUsuario'
+import { Paciente } from './pages/Paciente'
 
 
 
@@ -28,6 +29,7 @@ export const App = () => {
     username: ''
   })
 
+  const [paciente, setpaciente] = useState('')
   return (
     <div className='container-flush'>
       <Router>
@@ -51,9 +53,15 @@ export const App = () => {
     
           </RutaPrivada>
 
+          <RutaPrivada path='/paciente' loginStatus={loginStatus}>
+
+            <Paciente paciente = { paciente }/>
+    
+          </RutaPrivada>
+
           <RutaPrivada path='/' loginStatus={loginStatus} >
 
-            <Inicio usuario = {usuario} />
+            <Inicio usuario = {usuario} setpaciente = {setpaciente}/>
     
           </RutaPrivada>
           {/*

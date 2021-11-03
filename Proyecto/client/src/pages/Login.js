@@ -28,7 +28,6 @@ export const Login = (props) => {
     
     const login = (e) => {
         e.preventDefault()
-        console.log(password)
         Axios.post('http://127.0.0.1:5000/login', {
             username: username,
             password: password

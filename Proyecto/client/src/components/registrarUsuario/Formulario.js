@@ -150,7 +150,7 @@ export const Formulario = (props) => {
                 </div>
                 <div className='row mt-3'>
                     <div className='col d-grid'>
-                        <button type='submit' className='btn btn-primary '>Crear</button>
+                        <button type='submit' className='btn btn-primary '>Registrar Usuario</button>
                     </div>
                 </div>
             </form>

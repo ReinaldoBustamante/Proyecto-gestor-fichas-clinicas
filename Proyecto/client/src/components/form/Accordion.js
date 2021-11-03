@@ -1,10 +1,10 @@
 import React from 'react'
 import { DatosBasicos } from '../form/DatosBasicos'
-import { DatosClinicos } from '../form/DatosClinicos'
+//import { DatosClinicos } from '../form/DatosClinicos'
 export const Accordion = (props) => {
 
-    const {datosBasicos, setDatosBasicos, datosClinicos, setDatosClinicos} = props
-
+   // const {datosBasicos, setDatosBasicos, datosClinicos, setDatosClinicos} = props
+   const {datosBasicos, setDatosBasicos} = props
    
     return (
 
@@ -26,7 +26,7 @@ export const Accordion = (props) => {
                     </div>
                   </div>
 
-                  {/* DATOS Clinicos */}
+                  {/* DATOS Clinicos 
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="headingTwo">
                       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -39,7 +39,7 @@ export const Accordion = (props) => {
                       </div>
                     </div>
                   </div>
-
+                  */}
                   {/* Finalizar y Limpiar datos  */}
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="headingThree">

@@ -109,15 +109,42 @@ app.get('/pacientes', (req, res) => {
     })
 })
 
-// PACIENTES ID
+// ----------------post paciente---------------------------------
+app.post('/registrarPaciente', (req, res) => {
+    
+    const id_odontologo = req.body.id_odontologo
+    const nombre = req.body.nombre
+    const rut = req.body.rut
+    const telefono   = req.body.telefono
+    const celular     = req.body.celular
+    const estado_civil   = req.body.estadoCivil
+    const edad = req.body.edad
+    const domicilio     = req.body.domicilio
+    const profesion     = req.body.profesion
+    const lugar_trabajo     = req.body.lugarTrabajo
 
-app.get('/pacientes/:id', (req, res) => {
+    pool.query(
+        'INSERT INTO pacientes(id_odontologo,nombre, rut, telefono, celular, estado_civil, edad, domicilio,profesion,lugar_trabajo) VALUES (?,?,?,?,?,?,?,?,?,?)', [id_odontologo,nombre, rut,telefono, celular, estado_civil, edad, domicilio, profesion, lugar_trabajo],
+        (err, result) =>{
+            console.log(err)
+            
+        }
+         
+    )
+   
+})
+
+
+
+// PACIENTES RUT
+
+app.get('/pacientes/:rut', (req, res) => {
 
     pool.getConnection((err, connection) =>{
         if(err) throw err
         console.log(`conected as id ${connection.threadId}`)
 
-        connection.query('SELECT * from pacientes WHERE id_paciente = ?', [req.params.id], (err, rows) => {
+        connection.query('SELECT * from pacientes WHERE rut = ?', [req.params.rut], (err, rows) => {
             connection.release() // return the connection to pool
 
             if(!err){
@@ -149,6 +176,7 @@ app.get('/odontologos', (req, res) => {
         })
     })
 })
+
 
 // ODONTOLOGOS ID
 
