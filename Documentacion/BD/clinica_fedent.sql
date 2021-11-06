@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2021 a las 16:10:58
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.12
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 06-11-2021 a las 22:13:05
+-- Versión del servidor: 5.7.31
+-- Versión de PHP: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,11 +27,16 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `acceder`
 --
 
-CREATE TABLE `acceder` (
-  `id` int(50) NOT NULL,
+DROP TABLE IF EXISTS `acceder`;
+CREATE TABLE IF NOT EXISTS `acceder` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
   `id_odontologo` int(50) NOT NULL,
   `id_tons` int(50) NOT NULL,
-  `folio` int(50) NOT NULL
+  `folio` int(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_odontologo` (`id_odontologo`),
+  KEY `id_tons` (`id_tons`),
+  KEY `folio` (`folio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -40,8 +45,9 @@ CREATE TABLE `acceder` (
 -- Estructura de tabla para la tabla `datos_clinicos`
 --
 
-CREATE TABLE `datos_clinicos` (
-  `id_datos_clinicos` int(50) NOT NULL,
+DROP TABLE IF EXISTS `datos_clinicos`;
+CREATE TABLE IF NOT EXISTS `datos_clinicos` (
+  `id_datos_clinicos` int(50) NOT NULL AUTO_INCREMENT,
   `folio` int(50) NOT NULL,
   `padre_vivo` tinyint(1) NOT NULL,
   `enfermedad_padre` varchar(50) NOT NULL,
@@ -59,8 +65,10 @@ CREATE TABLE `datos_clinicos` (
   `diabetico` tinyint(1) NOT NULL,
   `diabetes_controlada` varchar(50) NOT NULL,
   `fuma` tinyint(1) NOT NULL,
-  `cuantos` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `cuantos` int(50) NOT NULL,
+  PRIMARY KEY (`id_datos_clinicos`),
+  KEY `folio` (`folio`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `datos_clinicos`
@@ -75,11 +83,14 @@ INSERT INTO `datos_clinicos` (`id_datos_clinicos`, `folio`, `padre_vivo`, `enfer
 -- Estructura de tabla para la tabla `ficha`
 --
 
-CREATE TABLE `ficha` (
-  `folio` int(50) NOT NULL,
+DROP TABLE IF EXISTS `ficha`;
+CREATE TABLE IF NOT EXISTS `ficha` (
+  `folio` int(50) NOT NULL AUTO_INCREMENT,
   `id_paciente` int(50) NOT NULL,
-  `fecha` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `fecha` varchar(50) NOT NULL,
+  PRIMARY KEY (`folio`),
+  KEY `id_paciente` (`id_paciente`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `ficha`
@@ -95,13 +106,16 @@ INSERT INTO `ficha` (`folio`, `id_paciente`, `fecha`) VALUES
 -- Estructura de tabla para la tabla `historial_clinico`
 --
 
-CREATE TABLE `historial_clinico` (
-  `id_historial_clinico` int(50) NOT NULL,
+DROP TABLE IF EXISTS `historial_clinico`;
+CREATE TABLE IF NOT EXISTS `historial_clinico` (
+  `id_historial_clinico` int(50) NOT NULL AUTO_INCREMENT,
   `folio` int(50) NOT NULL,
   `fecha` varchar(50) NOT NULL,
   `razon_ingreso` varchar(50) NOT NULL,
-  `detalles` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `detalles` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_historial_clinico`),
+  KEY `folio` (`folio`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `historial_clinico`
@@ -116,12 +130,15 @@ INSERT INTO `historial_clinico` (`id_historial_clinico`, `folio`, `fecha`, `razo
 -- Estructura de tabla para la tabla `odontograma`
 --
 
-CREATE TABLE `odontograma` (
-  `id_odontograma` int(50) NOT NULL,
+DROP TABLE IF EXISTS `odontograma`;
+CREATE TABLE IF NOT EXISTS `odontograma` (
+  `id_odontograma` int(50) NOT NULL AUTO_INCREMENT,
   `folio` int(50) NOT NULL,
   `fecha` varchar(50) NOT NULL,
-  `detalles` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `detalles` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_odontograma`),
+  KEY `folio` (`folio`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `odontograma`
@@ -139,13 +156,15 @@ INSERT INTO `odontograma` (`id_odontograma`, `folio`, `fecha`, `detalles`) VALUE
 -- Estructura de tabla para la tabla `odontologo`
 --
 
-CREATE TABLE `odontologo` (
-  `id_odontologo` int(50) NOT NULL,
+DROP TABLE IF EXISTS `odontologo`;
+CREATE TABLE IF NOT EXISTS `odontologo` (
+  `id_odontologo` int(50) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   `rut` varchar(50) NOT NULL,
   `telefono` varchar(50) NOT NULL,
-  `correo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `correo` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_odontologo`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `odontologo`
@@ -161,11 +180,15 @@ INSERT INTO `odontologo` (`id_odontologo`, `nombre`, `rut`, `telefono`, `correo`
 -- Estructura de tabla para la tabla `odontologo_tons`
 --
 
-CREATE TABLE `odontologo_tons` (
-  `id` int(50) NOT NULL,
+DROP TABLE IF EXISTS `odontologo_tons`;
+CREATE TABLE IF NOT EXISTS `odontologo_tons` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
   `id_odontologo` int(50) NOT NULL,
-  `id_tons` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_tons` int(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_odontologo` (`id_odontologo`),
+  KEY `id_tons` (`id_tons`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `odontologo_tons`
@@ -182,8 +205,9 @@ INSERT INTO `odontologo_tons` (`id`, `id_odontologo`, `id_tons`) VALUES
 -- Estructura de tabla para la tabla `pacientes`
 --
 
-CREATE TABLE `pacientes` (
-  `id_paciente` int(50) NOT NULL,
+DROP TABLE IF EXISTS `pacientes`;
+CREATE TABLE IF NOT EXISTS `pacientes` (
+  `id_paciente` int(50) NOT NULL AUTO_INCREMENT,
   `id_odontologo` int(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `rut` varchar(50) NOT NULL,
@@ -193,16 +217,21 @@ CREATE TABLE `pacientes` (
   `edad` int(50) NOT NULL,
   `domicilio` varchar(50) NOT NULL,
   `profesion` varchar(50) NOT NULL,
-  `lugar trabajo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `lugar_trabajo` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_paciente`),
+  KEY `id_odontologo` (`id_odontologo`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `pacientes`
 --
 
-INSERT INTO `pacientes` (`id_paciente`, `id_odontologo`, `nombre`, `rut`, `telefono`, `celular`, `estado_civil`, `edad`, `domicilio`, `profesion`, `lugar trabajo`) VALUES
+INSERT INTO `pacientes` (`id_paciente`, `id_odontologo`, `nombre`, `rut`, `telefono`, `celular`, `estado_civil`, `edad`, `domicilio`, `profesion`, `lugar_trabajo`) VALUES
 (1, 1, 'Reinaldo Bustamante', '19555874-4', '45632514', '85962145', 'Soltero', 24, 'soto aguilar', 'estudiante ', 'ninguna'),
-(2, 2, 'Felipe Vidal', '19111111-1', '54632185', '45879765', 'Soltero', 24, 'asd', 'asd', 'asd');
+(2, 2, 'Felipe Vidal', '19111111-1', '54632185', '45879765', 'Soltero', 24, 'asd', 'asd', 'asd'),
+(6, 1, 'test', 'test', 'test', 'test', 'Soltero', 24, 'test', 'test', 'test'),
+(7, 2, 'asd', 'asd', 'asd', 'asd', 'Soltero', 24, 'asd', 'asd', 'asd'),
+(8, 1, 'TEST2', 'test2', 'TEST2', 'test2', 'Soltero', 24, 'test2', 'TEST2', 'asd');
 
 -- --------------------------------------------------------
 
@@ -210,12 +239,14 @@ INSERT INTO `pacientes` (`id_paciente`, `id_odontologo`, `nombre`, `rut`, `telef
 -- Estructura de tabla para la tabla `piezas`
 --
 
-CREATE TABLE `piezas` (
-  `id_pieza` int(50) NOT NULL,
+DROP TABLE IF EXISTS `piezas`;
+CREATE TABLE IF NOT EXISTS `piezas` (
+  `id_pieza` int(50) NOT NULL AUTO_INCREMENT,
   `numero` int(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `zona` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `zona` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_pieza`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `piezas`
@@ -261,13 +292,17 @@ INSERT INTO `piezas` (`id_pieza`, `numero`, `nombre`, `zona`) VALUES
 -- Estructura de tabla para la tabla `pieza_odontograma`
 --
 
-CREATE TABLE `pieza_odontograma` (
-  `id` int(50) NOT NULL,
+DROP TABLE IF EXISTS `pieza_odontograma`;
+CREATE TABLE IF NOT EXISTS `pieza_odontograma` (
+  `id` int(50) NOT NULL AUTO_INCREMENT,
   `id_odontograma` int(50) NOT NULL,
   `id_pieza` int(50) NOT NULL,
   `estado` varchar(50) NOT NULL,
-  `diagnostico` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `diagnostico` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_odontograma` (`id_odontograma`),
+  KEY `id_pieza` (`id_pieza`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `pieza_odontograma`
@@ -283,13 +318,15 @@ INSERT INTO `pieza_odontograma` (`id`, `id_odontograma`, `id_pieza`, `estado`, `
 -- Estructura de tabla para la tabla `tons`
 --
 
-CREATE TABLE `tons` (
-  `id_tons` int(50) NOT NULL,
+DROP TABLE IF EXISTS `tons`;
+CREATE TABLE IF NOT EXISTS `tons` (
+  `id_tons` int(50) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   `rut` varchar(50) NOT NULL,
   `telefono` varchar(50) NOT NULL,
-  `correo` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `correo` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_tons`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tons`
@@ -299,157 +336,36 @@ INSERT INTO `tons` (`id_tons`, `nombre`, `rut`, `telefono`, `correo`) VALUES
 (1, 'Pedro reyes', '14562324-2', '45128796', 'pedroreyes@gmail.com'),
 (2, 'Juan rosales', '14575462-5', '54863214', 'juanrosales@gmail.com');
 
---
--- Índices para tablas volcadas
---
+-- --------------------------------------------------------
 
 --
--- Indices de la tabla `acceder`
---
-ALTER TABLE `acceder`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_odontologo` (`id_odontologo`),
-  ADD KEY `id_tons` (`id_tons`),
-  ADD KEY `folio` (`folio`);
-
---
--- Indices de la tabla `datos_clinicos`
---
-ALTER TABLE `datos_clinicos`
-  ADD PRIMARY KEY (`id_datos_clinicos`),
-  ADD KEY `folio` (`folio`);
-
---
--- Indices de la tabla `ficha`
---
-ALTER TABLE `ficha`
-  ADD PRIMARY KEY (`folio`),
-  ADD KEY `id_paciente` (`id_paciente`);
-
---
--- Indices de la tabla `historial_clinico`
---
-ALTER TABLE `historial_clinico`
-  ADD PRIMARY KEY (`id_historial_clinico`),
-  ADD KEY `folio` (`folio`);
-
---
--- Indices de la tabla `odontograma`
---
-ALTER TABLE `odontograma`
-  ADD PRIMARY KEY (`id_odontograma`),
-  ADD KEY `folio` (`folio`);
-
---
--- Indices de la tabla `odontologo`
---
-ALTER TABLE `odontologo`
-  ADD PRIMARY KEY (`id_odontologo`);
-
---
--- Indices de la tabla `odontologo_tons`
---
-ALTER TABLE `odontologo_tons`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_odontologo` (`id_odontologo`),
-  ADD KEY `id_tons` (`id_tons`);
-
---
--- Indices de la tabla `pacientes`
---
-ALTER TABLE `pacientes`
-  ADD PRIMARY KEY (`id_paciente`),
-  ADD KEY `id_odontologo` (`id_odontologo`);
-
---
--- Indices de la tabla `piezas`
---
-ALTER TABLE `piezas`
-  ADD PRIMARY KEY (`id_pieza`);
-
---
--- Indices de la tabla `pieza_odontograma`
---
-ALTER TABLE `pieza_odontograma`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_odontograma` (`id_odontograma`),
-  ADD KEY `id_pieza` (`id_pieza`);
-
---
--- Indices de la tabla `tons`
---
-ALTER TABLE `tons`
-  ADD PRIMARY KEY (`id_tons`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
+-- Estructura de tabla para la tabla `usuarios`
 --
 
---
--- AUTO_INCREMENT de la tabla `acceder`
---
-ALTER TABLE `acceder`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id_usuario` int(50) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `rut` varchar(50) NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `telefono` varchar(50) NOT NULL,
+  `rol` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_usuario`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
--- AUTO_INCREMENT de la tabla `datos_clinicos`
+-- Volcado de datos para la tabla `usuarios`
 --
-ALTER TABLE `datos_clinicos`
-  MODIFY `id_datos_clinicos` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
---
--- AUTO_INCREMENT de la tabla `ficha`
---
-ALTER TABLE `ficha`
-  MODIFY `folio` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `historial_clinico`
---
-ALTER TABLE `historial_clinico`
-  MODIFY `id_historial_clinico` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `odontograma`
---
-ALTER TABLE `odontograma`
-  MODIFY `id_odontograma` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `odontologo`
---
-ALTER TABLE `odontologo`
-  MODIFY `id_odontologo` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `odontologo_tons`
---
-ALTER TABLE `odontologo_tons`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `pacientes`
---
-ALTER TABLE `pacientes`
-  MODIFY `id_paciente` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `piezas`
---
-ALTER TABLE `piezas`
-  MODIFY `id_pieza` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT de la tabla `pieza_odontograma`
---
-ALTER TABLE `pieza_odontograma`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `tons`
---
-ALTER TABLE `tons`
-  MODIFY `id_tons` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `nombre`, `rut`, `correo`, `telefono`, `rol`) VALUES
+(1, 'admin', 'admin', 'Nombre Administrador', 'XX.XXX.XXX-X', 'administrador@gmail.com', '45125487', 'Administrador'),
+(2, 'user1', 'user1', 'Nombre usuario1', '14.214.523-5', 'usuario@gmail.com', '45123869', 'Odontologo'),
+(3, 'usuario2', 'usuario2', 'Reinaldo Bustamante', '19555874-4', 'reinaldobustamante@gmail.com', '45123265', 'tons'),
+(4, 'usuario3', 'usuario3', 'Carla Saez', '19465924-5', 'carlasaez@gmail.com', '45125632', 'odontologo'),
+(5, 'user5', 'user5', 'user 5', '45612345-2', 'user5@gmail.com', '45612345', 'odontologo'),
+(6, 'user8', 'user8 ', 'user8 ', '145234125-4', 'user8 ', '45612345', 'tons');
 
 --
 -- Restricciones para tablas volcadas
