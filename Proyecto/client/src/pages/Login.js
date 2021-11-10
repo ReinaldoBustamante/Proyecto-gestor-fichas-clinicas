@@ -62,9 +62,9 @@ export const Login = (props) => {
     }
 
     return (
-        <div className='container-fluid body'>
+        <div className='container-fluid fondo '>
             <div className='row '>
-                <div className='col'>
+                <div className='col body'>
                    <form onSubmit={ login }>
                        <Formulario     
                         setusername={setusername}

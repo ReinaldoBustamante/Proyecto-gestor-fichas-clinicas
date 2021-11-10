@@ -22,11 +22,11 @@ app.use((req, res, next) => {
 // MYSQL
 
 const pool = mysql.createPool({
-    connectionLimit : 10,
-    host            : 'localhost',
+    host            : '127.0.0.1',
+    port            :  "3307",
     user            : 'root',
-    password        : '',
-    database        : 'clinica_fedent'
+    password        : 'secret',
+    database        : 'fedent'
 })
 
 

@@ -13,8 +13,8 @@ export const Formulario = (props) => {
 
     return (
         <div className='container mt-5'>
-            <div className="card  mb-3 width shadow">
-                <div className="card-header">Login</div>
+            <div className="card  mb-3 width shadow color">
+                <div className="card-header bg-info h4 text-white">Ingrese sus datos</div>
                 <div className="card-body">
                 <div className='row'>
                     <div className='col'>
@@ -24,13 +24,13 @@ export const Formulario = (props) => {
                 </div>
                 <div className='row mt-3'>
                     <div className='col'>
-                        <label htmlFor=''>Password</label>
+                        <label htmlFor=''>Contraseña</label>
                         <input type='text' className='form-control' name='password' onChange = {handleOnChange} />
                     </div>
                 </div>
                 <div className='row mt-3'>
                     <div className='col d-grid'>
-                        <button type='submit' className='btn btn-primary'>Iniciar Sesion</button>
+                        <button type='submit' className='btn-lg btn-info text-white shadow mt-2 '>Iniciar Sesion</button>
                     </div>
                 </div>
                 </div>

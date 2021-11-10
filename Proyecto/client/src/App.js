@@ -33,7 +33,12 @@ export const App = () => {
   return (
     <div className='container-flush'>
       <Router>
+        {loginStatus === true?
         <Navbar setloginStatus={setloginStatus} usuario = {usuario}/>
+        :
+        ""
+        }
+        
 
         <Switch>
           {/* RUTA LOGIN*/}

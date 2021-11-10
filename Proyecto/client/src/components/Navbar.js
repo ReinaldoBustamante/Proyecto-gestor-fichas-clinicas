@@ -57,9 +57,8 @@ export const Navbar = (props) => {
                             }
                             
                         </ul>
-                        <form onSubmit={cerrarSesion}>
-                            <button type='submit' className='btn btn-outline-danger' >Cerrar Sesion</button>
-                        </form>
+                        <button type='button' onClick={cerrarSesion} className='btn btn-outline-danger' >Cerrar Sesion</button>
+                        
                         
                     </div>
 
