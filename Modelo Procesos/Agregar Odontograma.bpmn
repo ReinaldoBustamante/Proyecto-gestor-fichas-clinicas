@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1k7bnxl" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="8.8.2">
+  <bpmn:collaboration id="Collaboration_164l983">
+    <bpmn:participant id="Participant_05so37t" name="Agregar Odontograma" processRef="Process_165ntwe" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_165ntwe" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1fw22es">
+      <bpmn:lane id="Lane_1g1xldf" name="Dentista">
+        <bpmn:flowNodeRef>Event_1h3lx94</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0723nie</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_10zyd0q</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0wadoh3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1y85ma4</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Event_1h3lx94">
+      <bpmn:outgoing>Flow_0f4w05z</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_0723nie" name="Revisa los odontogramas asociados al paciente">
+      <bpmn:incoming>Flow_0f4w05z</bpmn:incoming>
+      <bpmn:outgoing>Flow_18g5m2c</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_10zyd0q" name="Selecciona Crear Nuevo odontograma">
+      <bpmn:incoming>Flow_18g5m2c</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nfv908</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0wadoh3" name="Ingresa datos del odontograma">
+      <bpmn:incoming>Flow_1nfv908</bpmn:incoming>
+      <bpmn:outgoing>Flow_10vvghd</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_1y85ma4" name="Crea Nuevo Odontograma">
+      <bpmn:incoming>Flow_10vvghd</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0f4w05z" sourceRef="Event_1h3lx94" targetRef="Activity_0723nie" />
+    <bpmn:sequenceFlow id="Flow_18g5m2c" sourceRef="Activity_0723nie" targetRef="Activity_10zyd0q" />
+    <bpmn:sequenceFlow id="Flow_1nfv908" sourceRef="Activity_10zyd0q" targetRef="Activity_0wadoh3" />
+    <bpmn:sequenceFlow id="Flow_10vvghd" sourceRef="Activity_0wadoh3" targetRef="Activity_1y85ma4" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_164l983">
+      <bpmndi:BPMNShape id="Participant_05so37t_di" bpmnElement="Participant_05so37t" isHorizontal="true">
+        <dc:Bounds x="160" y="120" width="1210" height="270" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1g1xldf_di" bpmnElement="Lane_1g1xldf" isHorizontal="true">
+        <dc:Bounds x="190" y="120" width="1180" height="270" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0f4w05z_di" bpmnElement="Flow_0f4w05z">
+        <di:waypoint x="278" y="230" />
+        <di:waypoint x="330" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18g5m2c_di" bpmnElement="Flow_18g5m2c">
+        <di:waypoint x="430" y="230" />
+        <di:waypoint x="550" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nfv908_di" bpmnElement="Flow_1nfv908">
+        <di:waypoint x="650" y="230" />
+        <di:waypoint x="770" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10vvghd_di" bpmnElement="Flow_10vvghd">
+        <di:waypoint x="870" y="230" />
+        <di:waypoint x="990" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1h3lx94_di" bpmnElement="Event_1h3lx94">
+        <dc:Bounds x="242" y="212" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0723nie_di" bpmnElement="Activity_0723nie">
+        <dc:Bounds x="330" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_10zyd0q_di" bpmnElement="Activity_10zyd0q">
+        <dc:Bounds x="550" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0wadoh3_di" bpmnElement="Activity_0wadoh3">
+        <dc:Bounds x="770" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1y85ma4_di" bpmnElement="Activity_1y85ma4">
+        <dc:Bounds x="990" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

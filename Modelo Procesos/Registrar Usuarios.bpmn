@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_10po270" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="8.8.2">
+  <bpmn:collaboration id="Collaboration_19le62r">
+    <bpmn:participant id="Participant_0xuwtbu" name="Registrar Usuarios" processRef="Process_0f9tqez" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_0f9tqez" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1utxwlv" />
+    <bpmn:startEvent id="StartEvent_1kfj8f4">
+      <bpmn:outgoing>Flow_13s3p7z</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_09zz4qc" name="Ingresa a la plataforma">
+      <bpmn:incoming>Flow_13s3p7z</bpmn:incoming>
+      <bpmn:outgoing>Flow_0joruvq</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0mfuubp" name="Selecciona Registrar Usuarios">
+      <bpmn:incoming>Flow_0joruvq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0awb141</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_1yn242d" name="Rellena el formulario">
+      <bpmn:incoming>Flow_0awb141</bpmn:incoming>
+      <bpmn:outgoing>Flow_0blt0r2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_1o4plbr" name="Selecciona rol(Odontólogo, Tons, Administrador)">
+      <bpmn:incoming>Flow_0blt0r2</bpmn:incoming>
+      <bpmn:outgoing>Flow_1v8ik55</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0zc5aot" name="Registra al usuario">
+      <bpmn:incoming>Flow_1v8ik55</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_13s3p7z" sourceRef="StartEvent_1kfj8f4" targetRef="Activity_09zz4qc" />
+    <bpmn:sequenceFlow id="Flow_0joruvq" sourceRef="Activity_09zz4qc" targetRef="Activity_0mfuubp" />
+    <bpmn:sequenceFlow id="Flow_0awb141" sourceRef="Activity_0mfuubp" targetRef="Activity_1yn242d" />
+    <bpmn:sequenceFlow id="Flow_0blt0r2" sourceRef="Activity_1yn242d" targetRef="Activity_1o4plbr" />
+    <bpmn:sequenceFlow id="Flow_1v8ik55" sourceRef="Activity_1o4plbr" targetRef="Activity_0zc5aot" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_19le62r">
+      <bpmndi:BPMNShape id="Participant_0xuwtbu_di" bpmnElement="Participant_0xuwtbu" isHorizontal="true">
+        <dc:Bounds x="156" y="39" width="1314" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_13s3p7z_di" bpmnElement="Flow_13s3p7z">
+        <di:waypoint x="278" y="160" />
+        <di:waypoint x="390" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0joruvq_di" bpmnElement="Flow_0joruvq">
+        <di:waypoint x="490" y="160" />
+        <di:waypoint x="610" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0awb141_di" bpmnElement="Flow_0awb141">
+        <di:waypoint x="710" y="160" />
+        <di:waypoint x="830" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0blt0r2_di" bpmnElement="Flow_0blt0r2">
+        <di:waypoint x="930" y="160" />
+        <di:waypoint x="1050" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1v8ik55_di" bpmnElement="Flow_1v8ik55">
+        <di:waypoint x="1150" y="160" />
+        <di:waypoint x="1270" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1kfj8f4">
+        <dc:Bounds x="242" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_09zz4qc_di" bpmnElement="Activity_09zz4qc">
+        <dc:Bounds x="390" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mfuubp_di" bpmnElement="Activity_0mfuubp">
+        <dc:Bounds x="610" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yn242d_di" bpmnElement="Activity_1yn242d">
+        <dc:Bounds x="830" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1o4plbr_di" bpmnElement="Activity_1o4plbr">
+        <dc:Bounds x="1050" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zc5aot_di" bpmnElement="Activity_0zc5aot">
+        <dc:Bounds x="1270" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
