@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2021 a las 21:44:40
+-- Tiempo de generación: 23-11-2021 a las 18:21:03
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.31
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `cfedent`
+-- Base de datos: `fedent`
 --
 
 -- --------------------------------------------------------
@@ -32,34 +32,6 @@ CREATE TABLE `acceder` (
   `id_odontologo` int(50) NOT NULL,
   `id_tons` int(50) NOT NULL,
   `folio` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `datos_clinicos`
---
-
-CREATE TABLE `datos_clinicos` (
-  `id_datos_clinicos` int(50) NOT NULL,
-  `folio` int(50) NOT NULL,
-  `padre_vivo` tinyint(1) NOT NULL,
-  `enfermedad_padre` varchar(50) NOT NULL,
-  `madre_viva` tinyint(1) NOT NULL,
-  `enfermedad_madre` varchar(50) NOT NULL,
-  `paciente_enfermo` tinyint(1) NOT NULL,
-  `enfermedad_paciente` varchar(50) NOT NULL,
-  `esta_tratamiento_medico` tinyint(1) NOT NULL,
-  `tratamiento_medico` varchar(50) NOT NULL,
-  `medicamentos_consumidos_habitualmente` varchar(50) NOT NULL,
-  `medicamentos_ultimos_cinco_a` varchar(50) NOT NULL,
-  `alergico` tinyint(1) NOT NULL,
-  `alergia_a` varchar(50) NOT NULL,
-  `cicatriza_bien` varchar(50) NOT NULL,
-  `diabetico` tinyint(1) NOT NULL,
-  `diabetes_controlada` varchar(50) NOT NULL,
-  `fuma` tinyint(1) NOT NULL,
-  `cuantos` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -270,13 +242,6 @@ ALTER TABLE `acceder`
   ADD KEY `folio` (`folio`);
 
 --
--- Indices de la tabla `datos_clinicos`
---
-ALTER TABLE `datos_clinicos`
-  ADD PRIMARY KEY (`id_datos_clinicos`),
-  ADD KEY `folio` (`folio`);
-
---
 -- Indices de la tabla `ficha`
 --
 ALTER TABLE `ficha`
@@ -355,12 +320,6 @@ ALTER TABLE `acceder`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `datos_clinicos`
---
-ALTER TABLE `datos_clinicos`
-  MODIFY `id_datos_clinicos` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT de la tabla `ficha`
 --
 ALTER TABLE `ficha`
@@ -431,12 +390,6 @@ ALTER TABLE `acceder`
   ADD CONSTRAINT `acceder_ibfk_1` FOREIGN KEY (`id_odontologo`) REFERENCES `odontologo` (`id_odontologo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `acceder_ibfk_2` FOREIGN KEY (`id_tons`) REFERENCES `tons` (`id_tons`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `acceder_ibfk_3` FOREIGN KEY (`folio`) REFERENCES `ficha` (`folio`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `datos_clinicos`
---
-ALTER TABLE `datos_clinicos`
-  ADD CONSTRAINT `datos_clinicos_ibfk_1` FOREIGN KEY (`folio`) REFERENCES `ficha` (`folio`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ficha`
