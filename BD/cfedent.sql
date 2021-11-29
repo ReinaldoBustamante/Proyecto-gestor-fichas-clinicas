@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2021 a las 18:21:03
+-- Tiempo de generación: 29-11-2021 a las 16:31:14
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.31
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `fedent`
+-- Base de datos: `cfedent`
 --
 
 -- --------------------------------------------------------
@@ -28,10 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `acceder` (
-  `id` int(50) NOT NULL,
-  `id_odontologo` int(50) NOT NULL,
-  `id_tons` int(50) NOT NULL,
-  `folio` int(50) NOT NULL
+  `id_odontologo` int(11) NOT NULL,
+  `id_tons` int(11) NOT NULL,
+  `rut` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -42,8 +41,50 @@ CREATE TABLE `acceder` (
 
 CREATE TABLE `ficha` (
   `folio` int(50) NOT NULL,
-  `id_paciente` int(50) NOT NULL,
-  `fecha` varchar(50) NOT NULL
+  `rut` varchar(50) NOT NULL,
+  `fecha_nacimiento` varchar(50) NOT NULL,
+  `fecha_ficha` varchar(50) NOT NULL,
+  `padre_con_vida` tinyint(1) NOT NULL,
+  `enfermedad_padre` varchar(50) NOT NULL,
+  `madre_con_vida` tinyint(1) NOT NULL,
+  `enfermedad_madre` varchar(50) NOT NULL,
+  `paciente_enfermo` tinyint(1) NOT NULL,
+  `tratamiento_paciente` varchar(50) NOT NULL,
+  `medicamentos` varchar(50) NOT NULL,
+  `medicamentos_cinco_años` varchar(50) NOT NULL,
+  `alegico_droga_alimento` tinyint(1) NOT NULL,
+  `que_drogra_alimento` varchar(50) NOT NULL,
+  `cicatriza_bien` varchar(50) NOT NULL,
+  `tiene_fiebre_reumatica` tinyint(1) NOT NULL,
+  `tratamiento_fiebre_reumatica` varchar(50) NOT NULL,
+  `diabetico` tinyint(1) NOT NULL,
+  `diabetes_controlada_con` varchar(50) NOT NULL,
+  `problema_cardiaco` tinyint(1) NOT NULL,
+  `que_problema_cardiaco` varchar(50) NOT NULL,
+  `toma_seguido_aspirina` tinyint(1) NOT NULL,
+  `frecuencia` varchar(50) NOT NULL,
+  `tiene_presion_alta` tinyint(1) NOT NULL,
+  `tratamiento_presion` varchar(50) NOT NULL,
+  `problemas_renales` tinyint(1) NOT NULL,
+  `ulcera_gastrica` tinyint(1) NOT NULL,
+  `hepatitis` tinyint(1) NOT NULL,
+  `tipo_hepatitis` varchar(50) NOT NULL,
+  `problema_hepatico` tinyint(1) NOT NULL,
+  `cual_problema_hepatico` varchar(50) NOT NULL,
+  `convulsiones` tinyint(1) NOT NULL,
+  `epileptico` tinyint(1) NOT NULL,
+  `medicamento_epilepcia` varchar(50) NOT NULL,
+  `fue_operado` tinyint(1) NOT NULL,
+  `operado_de` varchar(50) NOT NULL,
+  `fecha_operacion` varchar(50) NOT NULL,
+  `problemas_respiratorio` tinyint(1) NOT NULL,
+  `que_problema_respiratorio` varchar(50) NOT NULL,
+  `fuma` tinyint(1) NOT NULL,
+  `cuantos_fuma` int(50) NOT NULL,
+  `esta_embarazada` tinyint(1) NOT NULL,
+  `de_cuantos_meses` int(50) NOT NULL,
+  `constancia` tinyint(1) NOT NULL,
+  `que_constancia` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -53,11 +94,11 @@ CREATE TABLE `ficha` (
 --
 
 CREATE TABLE `historial_clinico` (
-  `id_historial_clinico` int(50) NOT NULL,
-  `folio` int(50) NOT NULL,
+  `id_historial_clinico` int(11) NOT NULL,
   `fecha` varchar(50) NOT NULL,
   `razon_ingreso` varchar(50) NOT NULL,
-  `detalles` varchar(50) NOT NULL
+  `detalles` varchar(50) NOT NULL,
+  `rut` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -68,33 +109,32 @@ CREATE TABLE `historial_clinico` (
 
 CREATE TABLE `odontograma` (
   `id_odontograma` int(50) NOT NULL,
-  `folio` int(50) NOT NULL,
   `fecha` varchar(50) NOT NULL,
-  `detalles` varchar(50) NOT NULL
+  `detalles` varchar(50) NOT NULL,
+  `rut` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `odontologo`
+-- Estructura de tabla para la tabla `odontologos`
 --
 
-CREATE TABLE `odontologo` (
+CREATE TABLE `odontologos` (
   `id_odontologo` int(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `rut` varchar(50) NOT NULL,
-  `telefono` varchar(50) NOT NULL,
+  `telefono` int(50) NOT NULL,
   `correo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `odontologo_tons`
+-- Estructura de tabla para la tabla `odontologos_tons`
 --
 
-CREATE TABLE `odontologo_tons` (
-  `id` int(50) NOT NULL,
+CREATE TABLE `odontologos_tons` (
   `id_odontologo` int(50) NOT NULL,
   `id_tons` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -102,22 +142,20 @@ CREATE TABLE `odontologo_tons` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pacientes`
+-- Estructura de tabla para la tabla `paciente`
 --
 
-CREATE TABLE `pacientes` (
-  `id_paciente` int(50) NOT NULL,
-  `id_odontologo` int(50) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `sexo` varchar(50) NOT NULL,
+CREATE TABLE `paciente` (
   `rut` varchar(50) NOT NULL,
-  `telefono` varchar(50) NOT NULL,
-  `celular` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `telefono` int(50) NOT NULL,
+  `celular` int(50) NOT NULL,
   `estado_civil` varchar(50) NOT NULL,
-  `edad` int(50) NOT NULL,
+  `fecha_nacimiento` varchar(50) NOT NULL,
   `domicilio` varchar(50) NOT NULL,
   `profesion` varchar(50) NOT NULL,
-  `lugar_trabajo` varchar(50) NOT NULL
+  `lugar_trabajo` varchar(50) NOT NULL,
+  `id_odontologo` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -174,13 +212,12 @@ INSERT INTO `piezas` (`id_pieza`, `numero`, `nombre`, `zona`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pieza_odontograma`
+-- Estructura de tabla para la tabla `piezas_odontogramas`
 --
 
-CREATE TABLE `pieza_odontograma` (
-  `id` int(50) NOT NULL,
+CREATE TABLE `piezas_odontogramas` (
   `id_odontograma` int(50) NOT NULL,
-  `id_pieza` int(50) NOT NULL,
+  `id_piezas` int(50) NOT NULL,
   `estado` varchar(50) NOT NULL,
   `diagnostico` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -195,7 +232,7 @@ CREATE TABLE `tons` (
   `id_tons` int(50) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `rut` varchar(50) NOT NULL,
-  `telefono` varchar(50) NOT NULL,
+  `telefono` int(50) NOT NULL,
   `correo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -221,12 +258,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `nombre`, `rut`, `correo`, `telefono`, `rol`) VALUES
-(1, 'admin', 'admin', 'Nombre Administrador', 'XX.XXX.XXX-X', 'administrador@gmail.com', '45125487', 'Administrador'),
-(2, 'user1', 'user1', 'Nombre usuario1', '14.214.523-5', 'usuario@gmail.com', '45123869', 'Odontologo'),
-(3, 'usuario2', 'usuario2', 'Reinaldo Bustamante', '19555874-4', 'reinaldobustamante@gmail.com', '45123265', 'tons'),
-(4, 'usuario3', 'usuario3', 'Carla Saez', '19465924-5', 'carlasaez@gmail.com', '45125632', 'odontologo'),
-(5, 'user5', 'user5', 'user 5', '45612345-2', 'user5@gmail.com', '45612345', 'odontologo'),
-(6, 'user8', 'user8 ', 'user8 ', '145234125-4', 'user8 ', '45612345', 'tons');
+(1, 'admin', 'admin', 'Nombre Administrador', 'XX.XXX.XXX-X', 'administrador@gmail.com', '45125487', 'Administrador');
 
 --
 -- Índices para tablas volcadas
@@ -236,51 +268,49 @@ INSERT INTO `usuarios` (`id_usuario`, `username`, `password`, `nombre`, `rut`, `
 -- Indices de la tabla `acceder`
 --
 ALTER TABLE `acceder`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `id_odontologo` (`id_odontologo`),
   ADD KEY `id_tons` (`id_tons`),
-  ADD KEY `folio` (`folio`);
+  ADD KEY `rut` (`rut`);
 
 --
 -- Indices de la tabla `ficha`
 --
 ALTER TABLE `ficha`
   ADD PRIMARY KEY (`folio`),
-  ADD KEY `id_paciente` (`id_paciente`);
+  ADD KEY `rut` (`rut`);
 
 --
 -- Indices de la tabla `historial_clinico`
 --
 ALTER TABLE `historial_clinico`
   ADD PRIMARY KEY (`id_historial_clinico`),
-  ADD KEY `folio` (`folio`);
+  ADD KEY `rut` (`rut`);
 
 --
 -- Indices de la tabla `odontograma`
 --
 ALTER TABLE `odontograma`
   ADD PRIMARY KEY (`id_odontograma`),
-  ADD KEY `folio` (`folio`);
+  ADD KEY `rut` (`rut`);
 
 --
--- Indices de la tabla `odontologo`
+-- Indices de la tabla `odontologos`
 --
-ALTER TABLE `odontologo`
+ALTER TABLE `odontologos`
   ADD PRIMARY KEY (`id_odontologo`);
 
 --
--- Indices de la tabla `odontologo_tons`
+-- Indices de la tabla `odontologos_tons`
 --
-ALTER TABLE `odontologo_tons`
-  ADD PRIMARY KEY (`id`),
+ALTER TABLE `odontologos_tons`
   ADD KEY `id_odontologo` (`id_odontologo`),
   ADD KEY `id_tons` (`id_tons`);
 
 --
--- Indices de la tabla `pacientes`
+-- Indices de la tabla `paciente`
 --
-ALTER TABLE `pacientes`
-  ADD PRIMARY KEY (`id_paciente`),
+ALTER TABLE `paciente`
+  ADD PRIMARY KEY (`rut`),
   ADD KEY `id_odontologo` (`id_odontologo`);
 
 --
@@ -290,12 +320,11 @@ ALTER TABLE `piezas`
   ADD PRIMARY KEY (`id_pieza`);
 
 --
--- Indices de la tabla `pieza_odontograma`
+-- Indices de la tabla `piezas_odontogramas`
 --
-ALTER TABLE `pieza_odontograma`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_odontograma` (`id_odontograma`),
-  ADD KEY `id_pieza` (`id_pieza`);
+ALTER TABLE `piezas_odontogramas`
+  ADD KEY `id_piezas` (`id_piezas`),
+  ADD KEY `id_odontograma` (`id_odontograma`);
 
 --
 -- Indices de la tabla `tons`
@@ -314,46 +343,28 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `acceder`
---
-ALTER TABLE `acceder`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `ficha`
 --
 ALTER TABLE `ficha`
-  MODIFY `folio` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `folio` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_clinico`
 --
 ALTER TABLE `historial_clinico`
-  MODIFY `id_historial_clinico` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_historial_clinico` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `odontograma`
 --
 ALTER TABLE `odontograma`
-  MODIFY `id_odontograma` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_odontograma` int(50) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `odontologo`
+-- AUTO_INCREMENT de la tabla `odontologos`
 --
-ALTER TABLE `odontologo`
-  MODIFY `id_odontologo` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `odontologo_tons`
---
-ALTER TABLE `odontologo_tons`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `pacientes`
---
-ALTER TABLE `pacientes`
-  MODIFY `id_paciente` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `odontologos`
+  MODIFY `id_odontologo` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `piezas`
@@ -362,16 +373,10 @@ ALTER TABLE `piezas`
   MODIFY `id_pieza` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT de la tabla `pieza_odontograma`
---
-ALTER TABLE `pieza_odontograma`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT de la tabla `tons`
 --
 ALTER TABLE `tons`
-  MODIFY `id_tons` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_tons` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -387,47 +392,47 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `acceder`
 --
 ALTER TABLE `acceder`
-  ADD CONSTRAINT `acceder_ibfk_1` FOREIGN KEY (`id_odontologo`) REFERENCES `odontologo` (`id_odontologo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `acceder_ibfk_2` FOREIGN KEY (`id_tons`) REFERENCES `tons` (`id_tons`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `acceder_ibfk_3` FOREIGN KEY (`folio`) REFERENCES `ficha` (`folio`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `acceder_ibfk_1` FOREIGN KEY (`rut`) REFERENCES `paciente` (`rut`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `acceder_ibfk_2` FOREIGN KEY (`id_odontologo`) REFERENCES `odontologos` (`id_odontologo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `acceder_ibfk_3` FOREIGN KEY (`id_tons`) REFERENCES `tons` (`id_tons`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ficha`
 --
 ALTER TABLE `ficha`
-  ADD CONSTRAINT `ficha_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ficha_ibfk_1` FOREIGN KEY (`rut`) REFERENCES `paciente` (`rut`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `historial_clinico`
 --
 ALTER TABLE `historial_clinico`
-  ADD CONSTRAINT `historial_clinico_ibfk_1` FOREIGN KEY (`folio`) REFERENCES `ficha` (`folio`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `historial_clinico_ibfk_1` FOREIGN KEY (`rut`) REFERENCES `paciente` (`rut`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `odontograma`
 --
 ALTER TABLE `odontograma`
-  ADD CONSTRAINT `odontograma_ibfk_1` FOREIGN KEY (`folio`) REFERENCES `ficha` (`folio`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `odontograma_ibfk_1` FOREIGN KEY (`rut`) REFERENCES `paciente` (`rut`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `odontologo_tons`
+-- Filtros para la tabla `odontologos_tons`
 --
-ALTER TABLE `odontologo_tons`
-  ADD CONSTRAINT `odontologo_tons_ibfk_1` FOREIGN KEY (`id_odontologo`) REFERENCES `odontologo` (`id_odontologo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `odontologo_tons_ibfk_2` FOREIGN KEY (`id_tons`) REFERENCES `tons` (`id_tons`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `odontologos_tons`
+  ADD CONSTRAINT `odontologos_tons_ibfk_1` FOREIGN KEY (`id_odontologo`) REFERENCES `odontologos` (`id_odontologo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `odontologos_tons_ibfk_2` FOREIGN KEY (`id_tons`) REFERENCES `tons` (`id_tons`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `pacientes`
+-- Filtros para la tabla `paciente`
 --
-ALTER TABLE `pacientes`
-  ADD CONSTRAINT `pacientes_ibfk_1` FOREIGN KEY (`id_odontologo`) REFERENCES `odontologo` (`id_odontologo`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `paciente`
+  ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`id_odontologo`) REFERENCES `odontologos` (`id_odontologo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `pieza_odontograma`
+-- Filtros para la tabla `piezas_odontogramas`
 --
-ALTER TABLE `pieza_odontograma`
-  ADD CONSTRAINT `pieza_odontograma_ibfk_1` FOREIGN KEY (`id_pieza`) REFERENCES `piezas` (`id_pieza`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pieza_odontograma_ibfk_2` FOREIGN KEY (`id_odontograma`) REFERENCES `odontograma` (`id_odontograma`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `piezas_odontogramas`
+  ADD CONSTRAINT `piezas_odontogramas_ibfk_1` FOREIGN KEY (`id_piezas`) REFERENCES `piezas` (`id_pieza`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `piezas_odontogramas_ibfk_2` FOREIGN KEY (`id_odontograma`) REFERENCES `odontograma` (`id_odontograma`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
