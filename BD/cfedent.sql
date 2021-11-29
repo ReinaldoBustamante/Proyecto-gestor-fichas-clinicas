@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2021 a las 16:31:14
+-- Tiempo de generación: 29-11-2021 a las 17:53:50
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.31
 
@@ -155,7 +155,8 @@ CREATE TABLE `paciente` (
   `domicilio` varchar(50) NOT NULL,
   `profesion` varchar(50) NOT NULL,
   `lugar_trabajo` varchar(50) NOT NULL,
-  `id_odontologo` int(50) NOT NULL
+  `id_odontologo` int(50) NOT NULL,
+  `sexo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
