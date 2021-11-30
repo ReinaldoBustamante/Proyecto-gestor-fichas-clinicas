@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-11-2021 a las 17:53:50
+-- Tiempo de generación: 30-11-2021 a las 17:50:24
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.31
 
@@ -76,7 +76,6 @@ CREATE TABLE `ficha` (
   `medicamento_epilepcia` varchar(50) NOT NULL,
   `fue_operado` tinyint(1) NOT NULL,
   `operado_de` varchar(50) NOT NULL,
-  `fecha_operacion` varchar(50) NOT NULL,
   `problemas_respiratorio` tinyint(1) NOT NULL,
   `que_problema_respiratorio` varchar(50) NOT NULL,
   `fuma` tinyint(1) NOT NULL,
