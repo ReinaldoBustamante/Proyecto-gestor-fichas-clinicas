@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2021 a las 19:52:29
+-- Tiempo de generación: 16-12-2021 a las 16:15:07
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.3.31
 
@@ -42,8 +42,8 @@ CREATE TABLE `acceder` (
 CREATE TABLE `ficha` (
   `folio` int(50) NOT NULL,
   `rut` varchar(50) NOT NULL,
-  `fecha_nacimiento` varchar(50) NOT NULL,
-  `fecha_ficha` varchar(50) NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
+  `fecha_ficha` date NOT NULL,
   `padre_con_vida` tinyint(1) NOT NULL,
   `enfermedad_padre` varchar(50) NOT NULL,
   `madre_con_vida` tinyint(1) NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE `ficha` (
 
 CREATE TABLE `historial_clinico` (
   `id_historial_clinico` int(11) NOT NULL,
-  `fecha` varchar(50) NOT NULL,
+  `fecha` date NOT NULL,
   `razon_ingreso` varchar(50) NOT NULL,
   `detalles` varchar(50) NOT NULL,
   `rut` varchar(50) NOT NULL
@@ -108,9 +108,12 @@ CREATE TABLE `historial_clinico` (
 
 CREATE TABLE `odontograma` (
   `id_odontograma` int(50) NOT NULL,
-  `fecha` varchar(50) NOT NULL,
-  `detalles` varchar(50) NOT NULL,
-  `rut` varchar(50) NOT NULL
+  `fecha` date NOT NULL,
+  `rut` varchar(50) NOT NULL,
+  `diagnostico` varchar(50) NOT NULL,
+  `pieza` varchar(50) NOT NULL,
+  `cara` varchar(50) NOT NULL,
+  `procedimiento` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -150,7 +153,7 @@ CREATE TABLE `paciente` (
   `telefono` int(50) NOT NULL,
   `celular` int(50) NOT NULL,
   `estado_civil` varchar(50) NOT NULL,
-  `fecha_nacimiento` varchar(50) NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
   `domicilio` varchar(50) NOT NULL,
   `profesion` varchar(50) NOT NULL,
   `lugar_trabajo` varchar(50) NOT NULL,
@@ -208,19 +211,6 @@ INSERT INTO `piezas` (`id_pieza`, `numero`, `nombre`, `zona`) VALUES
 (30, 30, 'Primer Molar', 'Inferior Derecha'),
 (31, 31, 'Segundo Molar', 'Inferior Derecha'),
 (32, 32, 'Tercer Molar', 'Inferior Derecha');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `piezas_odontogramas`
---
-
-CREATE TABLE `piezas_odontogramas` (
-  `id_odontograma` int(50) NOT NULL,
-  `id_piezas` int(50) NOT NULL,
-  `estado` varchar(50) NOT NULL,
-  `diagnostico` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -320,13 +310,6 @@ ALTER TABLE `piezas`
   ADD PRIMARY KEY (`id_pieza`);
 
 --
--- Indices de la tabla `piezas_odontogramas`
---
-ALTER TABLE `piezas_odontogramas`
-  ADD KEY `id_piezas` (`id_piezas`),
-  ADD KEY `id_odontograma` (`id_odontograma`);
-
---
 -- Indices de la tabla `tons`
 --
 ALTER TABLE `tons`
@@ -358,13 +341,13 @@ ALTER TABLE `historial_clinico`
 -- AUTO_INCREMENT de la tabla `odontograma`
 --
 ALTER TABLE `odontograma`
-  MODIFY `id_odontograma` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_odontograma` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `odontologos`
 --
 ALTER TABLE `odontologos`
-  MODIFY `id_odontologo` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_odontologo` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `piezas`
@@ -426,13 +409,6 @@ ALTER TABLE `odontologos_tons`
 --
 ALTER TABLE `paciente`
   ADD CONSTRAINT `paciente_ibfk_1` FOREIGN KEY (`id_odontologo`) REFERENCES `odontologos` (`id_odontologo`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `piezas_odontogramas`
---
-ALTER TABLE `piezas_odontogramas`
-  ADD CONSTRAINT `piezas_odontogramas_ibfk_1` FOREIGN KEY (`id_piezas`) REFERENCES `piezas` (`id_pieza`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `piezas_odontogramas_ibfk_2` FOREIGN KEY (`id_odontograma`) REFERENCES `odontograma` (`id_odontograma`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
