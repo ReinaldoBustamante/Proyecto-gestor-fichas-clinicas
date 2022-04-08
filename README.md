@@ -48,7 +48,7 @@ Para esto debera instalar phpmyadmin en su computadora, crear una base de datos,
 
 ![image](https://help.wnpower.com/hc/article_attachments/360056945852/mceclip0.png)
 
-**Tutorial instalar phpmyadmin windows:** https://www.youtube.com/watch?v=36ritPuyd00
+**Tutorial instalar phpmyadmin windows**: https://www.youtube.com/watch?v=36ritPuyd00
 
 ## Editar archivo de configuracion.
 
