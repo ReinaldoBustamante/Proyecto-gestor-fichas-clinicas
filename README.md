@@ -73,3 +73,21 @@ npm start
 ~~~
 
 Una vez realizada esto la api estara alojada en el puerto 5000 y podra acceder mediante http://localhost:5000/usuarios.
+
+
+# Inicializar Aplicacion
+
+Al ser una aplicacion desarrollada en react usted debera tener nodejs instalado pero como siguio el paso anterior esto ya lo deberia tener. Por lo tanto se mueve a la carpeta del repositorio fedent-implementacion y escribir en la consola.
+
+~~~
+ npm install
+~~~
+
+una vez instaladas las dependencias 
+
+~~~
+ npm start
+~~~
+
+ahora deberia poder acceder a la pagina mediante el puerto 3000.
+
