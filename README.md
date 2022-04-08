@@ -21,7 +21,7 @@ node -v
 
 Al tener todo esto debera importar cfedent.sql en MySql o Phpmyadmin. 
 
-## Importar cfedent con consola MySql
+## Importar cfedent con consola MySql (Opcion 1)
 
 Puede crear una base de datos con el nombre cfedent mediante comando en la consola mysql
 
@@ -42,7 +42,7 @@ SHOW DATABASES;
 ~~~
 al hacer esto debiera salir la bd creada anteriormente.
 
-## Importar cfedent con Phpmyadmin
+## Importar cfedent con Phpmyadmin(Opcion 2)
 
 Para esto debera instalar phpmyadmin en su computadora, crear una base de datos, presionarla e ir a la opcion de importar. para esto seguir la siguiente imagen:
 
