@@ -1,38 +1,75 @@
-# INFO282
-Proyecto Taller De Ingeniería De Software
+# Como ejecutar
 
-Mockup: https://xd.adobe.com/view/3f604505-a573-4e0a-9358-085d0074dfa9-6a33/  
+Este proyecto se dividio en 2 partes (API, Front-end) por lo que para la ejecucion de este sistema se deberan clonar estos 2 repositorios 
+[API](https://github.com/Spun1/fedent-api)  [Front-end](https://github.com/Spun1/fedent-implementacion).
 
-Implementacion: https://github.com/Spun1/fedent-implementacion  
+Una vez clonados se debera inicializar la API.
 
-API: https://github.com/Spun1/fedent-api  
+# Inicializacion API
 
-### Integrantes:
-- Reinaldo Bustamante
-- Benjamin Barrientos
-- Carla Saez
-- Felipe Vidal
+para ello debera tener Mysql o Phpmyadmin para poder gestionar la base de datos. Esta base de datos se podra encontra en el presente repositorio [BD](https://github.com/ReinaldoBustamante/Proyecto-gestor-fichas-clinicas/tree/main/BD) con el nombre de cfedent.sql
 
-### Arquitectura de Software:
-La arquitectura a utilizar en el proyecto será MVC (Modelo Vista Controlador), el cual es un patrón que separa la applicación en tres capas:
+Tambien debera tener nodejs instalado. Esto se puede instalar con el siguiente comando:
 
-- Modelo: Representación que contiene la información de los datos.
-- Vista: Interfaz de usuario.
-- Controlador: Conexión entre el modelo y la vista.
+~~~
+sudo apt update
 
-![image](https://user-images.githubusercontent.com/36490478/132144998-b56e3206-f0f7-49ab-abe0-99ccdca5f40f.png)
+sudo apt install nodejs
 
-A continuacion se describen las herramientas a utilizar en este proyecto.
-#### Lenguaje:
-Debido a que el proyecto a realizar es una aplicación web se utilizará el lenguaje JavaScript. Otra razón es que este lenguaje lo hemos utilizado anteriormente.
+node -v
+~~~
 
-#### Base de datos:
-Debido a que la seguridad de los datos es muy importante en las fichas clínicas de los pacientes, se utilizará una base de datos MySql. También una razón para utilizar esta base de datos es su facilidad de usar y la consistencia de los datos necesaria para evitar errores 
+Al tener todo esto debera importar cfedent.sql en MySql o Phpmyadmin. 
 
-#### Framework:
-- React: Debido a la necesidad de utilizar un framework en este proyecto para facilitar la organización del código se utilizará React ya que este maneja el concepto de componentes, además de haberlo utilizado anteriormente.
+## Importar cfedent con consola MySql
 
-- Bootstrap: Se utilizará bootstrap debido a la comodidad y fácil manejo que ofrece al utilizarlo para la creación de componentes, formularios, estilos, entre otras cosas. Además de darle la posibilidad a la página web de volverla responsive.
+Puede crear una base de datos con el nombre cfedent mediante comando en la consola mysql
+
+~~~
+CREATE DATABASE cfedent;
+~~~
+
+luego en la carpeta donde este la base de datos escribir lo siguiente
+
+~~~
+mysql -u username -p cfedent < cfedent.sql
+~~~
+
+una vez realizado esto puede verificar mediante comando sql si se creo exitosamente. para ello ingresar a la consola y escribir 
+
+~~~
+SHOW DATABASES;
+~~~
+al hacer esto debiera salir la bd creada anteriormente.
+
+## Importar cfedent con Phpmyadmin
+
+Para esto debera instalar phpmyadmin en su computadora, crear una base de datos, presionarla e ir a la opcion de importar. para esto seguir la siguiente imagen:
+
+![image](https://help.wnpower.com/hc/article_attachments/360056945852/mceclip0.png)
 
 
+## Editar archivo de configuracion.
 
+Una vez tenga todo lo anterior debera acceder al archivo connection.js y editar los siguientes campos
+
+~~~
+const pool = mysql.createPool({
+    host            : 'localhost',
+    port            :  '3306',
+    user            : 'root',
+    password        : 'tu password',
+    database        : 'cfedent'
+    
+})
+~~~
+
+## EJECUTAR API
+
+Debera ejecutar el siguiente comando a nivel de la carpeta del repositorio fedent-api
+
+~~~
+npm start
+~~~
+
+Una vez realizada esto la api estara alojada en el puerto 5000 y podra acceder mediante http://localhost:5000/usuarios.
