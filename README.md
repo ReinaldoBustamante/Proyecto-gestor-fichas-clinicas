@@ -93,3 +93,5 @@ ahora deberia poder acceder a la pagina mediante el puerto 3000.
 
 
 ![image](https://github.com/ReinaldoBustamante/Proyecto-gestor-fichas-clinicas/blob/main/img/pag.png)
+
+**Para ingresar al sistema debera ocupar el usuario admin y contraseña admin**
