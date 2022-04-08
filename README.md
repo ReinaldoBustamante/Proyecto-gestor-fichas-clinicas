@@ -92,4 +92,4 @@ una vez instaladas las dependencias
 ahora deberia poder acceder a la pagina mediante el puerto 3000.
 
 
-![image](https://github.com/ReinaldoBustamante/Proyecto-gestor-fichas-clinicas/tree/main/img/pag.png)
+![image](https://github.com/ReinaldoBustamante/Proyecto-gestor-fichas-clinicas/blob/main/img/pag.png)
