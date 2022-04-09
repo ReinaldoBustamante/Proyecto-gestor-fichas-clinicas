@@ -99,4 +99,4 @@ Escribir
 npm test
 ~~~
 
-estando en la ubicacion de selenium del repositorio fedent-implementacion.
+estando en la ubicacion de selenium del repositorio fedent-implementacion. **Es necesario inicializar antes la aplicacion**
