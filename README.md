@@ -1,6 +1,6 @@
 # Como ejecutar
 
-Para ejecutar este proyecto es necesario descargar solo el repositorio [Cliente](https://github.com/Spun1/fedent-implementacion). debido a que la api esta subida a un servidor. 
+Para ejecutar este proyecto es necesario descargar solo el repositorio [Cliente](https://github.com/ReinaldoBustamante/fedent-implementacion). debido a que la api esta subida a un servidor. 
 
 <!--- # Inicializacion API
 
