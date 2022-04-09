@@ -93,11 +93,13 @@ ahora deberia poder acceder a la pagina mediante el puerto 3000.
 
 # Inicializar test automatico
 
+Antes de iniciar este proceso debera descargar geckodriver https://github.com/mozilla/geckodriver/releases
+
 Escribir 
-estando en la ubicacion de selenium del repositorio fedent-implementacion escribir lo siguiente
+estando en la ubicacion de selenium del repositorio fedent-implementacion escribir lo siguiente 
 ~~~
 npm install
 npm test
 ~~~
 
-**Es necesario inicializar antes la aplicacion**
+**Es necesario inicializar antes la aplicacion** Tambien puede que los testeos no funcionen a la primera por lo que es necesario intentar varias veces.
