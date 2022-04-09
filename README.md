@@ -93,13 +93,13 @@ ahora deberia poder acceder a la pagina mediante el puerto 3000.
 
 # Inicializar test automatico
 
-
-Escribir 
-estando en la ubicacion de selenium del repositorio fedent-implementacion escribir lo siguiente 
-~~~
-npm install
-npm test
-~~~
+* Instalar Mozilla Firefox
+* Estar ubicado en la carpeta selenium del repositorio fedent-implementacion
+* Escribir lo siguiente 
+    ~~~
+    npm install
+    npm test
+    ~~~
 
 **Es necesario inicializar antes la aplicacion** Tambien puede que los testeos no funcionen a la primera por lo que es necesario intentar varias veces.
 
