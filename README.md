@@ -74,7 +74,19 @@ Una vez realizada esto la api estara alojada en el puerto 5000 y podra acceder m
 
 # Inicializar Aplicacion
 
-Al ser una aplicacion desarrollada en react usted debera tener nodejs instalado. Por lo tanto se debera mover a la carpeta del repositorio fedent-implementacion y escribir en la consola.
+Al ser una aplicacion desarrollada en react usted debera tener **Nodejs** instalado. 
+
+## Instalacion Nodejs Windows
+
+* Descargar [Nodejs](https://nodejs.org/en/download/) 
+* Abrirlo
+* Una vez instalado debera tener en su equipo "Node.js command prompt" el cual sera la consolo que debera abrir para ejecutar los siguientes comandos.
+
+## Instalacion Nodejs Ubuntu
+
+* [Pasos](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04) 
+
+Luego de tener instalado **Nodejs** debera abrir la consola correspondiente y se debera mover a la carpeta del repositorio fedent-implementacion y escribir en la consola.
 
 ~~~
  npm install
@@ -95,7 +107,7 @@ ahora deberia poder acceder a la pagina mediante el puerto 3000.
 
 * Instalar Mozilla Firefox
 * Estar ubicado en la carpeta selenium del repositorio fedent-implementacion
-* Escribir lo siguiente 
+* Escribir lo siguiente en consola
     ~~~
     npm install
     npm test
