@@ -94,9 +94,10 @@ ahora deberia poder acceder a la pagina mediante el puerto 3000.
 # Inicializar test automatico
 
 Escribir 
-
+estando en la ubicacion de selenium del repositorio fedent-implementacion escribir lo siguiente
 ~~~
+npm install
 npm test
 ~~~
 
-estando en la ubicacion de selenium del repositorio fedent-implementacion. **Es necesario inicializar antes la aplicacion**
+**Es necesario inicializar antes la aplicacion**
