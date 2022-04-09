@@ -78,13 +78,15 @@ Al ser una aplicacion desarrollada en react usted debera tener **Nodejs** instal
 
 ## Instalacion Nodejs Windows
 
-* Descargar [Nodejs](https://nodejs.org/en/download/) 
-* Abrirlo
-* Una vez instalado debera tener en su equipo "Node.js command prompt" el cual sera la consolo que debera abrir para ejecutar los siguientes comandos.
+    * Descargar [Nodejs](https://nodejs.org/en/download/) 
+    * Abrirlo
+    * Una vez instalado debera tener en su equipo "Node.js command prompt" el cual sera la consolo que debera abrir para ejecutar los siguientes comandos.
 
 ## Instalacion Nodejs Ubuntu
 
-* [Pasos](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04) 
+    * [Pasos](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04) 
+ 
+## Ejecucion 
 
 Luego de tener instalado **Nodejs** debera abrir la consola correspondiente y se debera mover a la carpeta del repositorio fedent-implementacion y escribir en la consola.
 
